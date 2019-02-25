@@ -17,23 +17,27 @@
     "email": "masterj2@gmail.com"
   },
   "contributors": [],
-  "main": "./src/index.html",
+  "main": "./dist/index.html",
   "repository": {
     "type": "git",
     "url": "git@github.com:masterjg/nwjs-bootstrap.git"
   },
   "scripts": {
     "generate:icons": "png2icons ./resources/icon.png ./resources/icon -allp -hm",
-    "start": "run --x64 .",
-    "build": "build --concurrent --tasks win-x64,linux-x64,mac-x64 .",
-    "build:win": "build --tasks win-x64 .",
-    "build:lnx": "build --tasks linux-x64 .",
-    "build:mac": "build --tasks mac-x64 ."
+    "start": "cross-env NODE_ENV=development webpack && run --x64 .",
+    "build": "cross-env NODE_ENV=production webpack && build --concurrent --tasks win-x64,linux-x64,mac-x64 .",
+    "build:win": "cross-env NODE_ENV=production webpack && build --tasks win-x64 .",
+    "build:lnx": "cross-env NODE_ENV=production webpack && build --tasks linux-x64 .",
+    "build:mac": "cross-env NODE_ENV=production webpack && build --tasks mac-x64 ."
   },
   "devDependencies": {
+    "clean-webpack-plugin": "^1.0.1",
+    "cross-env": "^5.2.0",
+    "html-webpack-plugin": "^3.2.0",
     "nwjs-builder-phoenix": "^1.15.0",
     "png2icons": "^1.0.1",
-    "webpack": "^4.29.5"
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3"
   },
   "private": true,
   "window": {
@@ -52,7 +56,7 @@
     "output": "./build/",
     "packed": true,
     "files": [
-      "./src/index.html",
+      "./dist/**/*.*",
       "./resources/icon.png"
     ],
     "appId": "io.nwjs-bootstrap.${name}",
