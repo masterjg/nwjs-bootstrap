@@ -44,8 +44,7 @@
     "title": "nwjs-bootstrap",
     "min_width": 1280,
     "min_height": 720,
-    "icon": "./resources/icon.png",
-    "show_in_taskbar": false
+    "icon": "./resources/icon.png"
   },
   "webkit": {
     "plugin": false

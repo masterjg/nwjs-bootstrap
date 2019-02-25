@@ -5,7 +5,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // @ts-ignore
 process.traceDeprecation = true;
 
-module.exports = { 
+module.exports = {
+  externals: {
+    "chrome": "chrome"
+  },
   devtool: "source-map",
   mode: process.env.NODE_ENV,
   target: "node-webkit",
