@@ -1,0 +1,39 @@
+{
+  "name": "nwjs-bootstrap",
+  "version": "0.0.1",
+  "description": "NW.js bootstrap to kickstart your project.",
+  "keywords": [
+    "nw.js",
+    "bootstrap"
+  ],
+  "homepage": "https://github.com/masterjg/nwjs-bootstrap",
+  "bugs": {
+    "url": "https://github.com/masterjg/nwjs-bootstrap/issues",
+    "email": "masterj2@gmail.com"
+  },
+  "license": "CC-BY-NC-SA-4.0",
+  "author": {
+    "name": "Marius Guščius",
+    "email": "masterj2@gmail.com"
+  },
+  "contributors": [],
+  "main": "app.js",
+  "browser": "app.js",
+  "bin": {
+    "nwjs": "./app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:masterjg/nwjs-bootstrap.git"
+  },
+  "scripts": {
+
+  },
+  "dependencies": {
+
+  },
+  "devDependencies": {
+
+  },
+  "private": true
+}
