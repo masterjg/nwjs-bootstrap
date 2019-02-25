@@ -1,25 +1,20 @@
 // @ts-ignore
 import chrome from 'chrome';
 
-setInterval(async () => {
-  const [ cpuInfo ] = await Promise.all([
-    await getCPUInfo()
-  ]);
-  await setSystemInfoInDom(cpuInfo);
-}, 1000);
-
-async function getCPUInfo() {
-  return new Promise((resolve) => {
-    chrome.system.cpu.getInfo(resolve);
-  });
-}
-
 let previousProcessorsInfo;
 
-async function setSystemInfoInDom(cpuInfo) {
+setInterval(async () => {
+  await Promise.all([
+    setCPUDataInDOM(),
+    setMemoryDataInDOM(),
+    setStorageDataInDOM()
+  ]);
+}, 1000);
+
+async function setCPUDataInDOM() {
+  const cpuInfo = await getCPUData();
   const currentProcessorsInfo = cpuInfo.processors;
-  document.getElementById("app").innerHTML = `
-    <h1>System summary</h1>
+  document.getElementById('cpu').innerHTML = `
     <h2>CPU</h2>
     <strong>Model:</strong> ${cpuInfo.modelName}<br/>
     <strong>Architecture:</strong> ${cpuInfo.archName}<br/>
@@ -39,4 +34,38 @@ async function setSystemInfoInDom(cpuInfo) {
     })()}<br/>
   `;
   previousProcessorsInfo = currentProcessorsInfo;
+}
+
+async function setMemoryDataInDOM() {
+  const memoryInfo = await getMemoryData();
+  document.getElementById('memory').innerHTML = `
+    <h2>Memory</h2>
+    <progress value="${memoryInfo.availableCapacity}" max="${memoryInfo.capacity}"></progress><br/>
+  `;
+}
+
+async function setStorageDataInDOM() {
+  const storageInfo = await getStorageData();
+  document.getElementById('storage').innerHTML = `
+    <h2>Storage</h2>
+    ${storageInfo.map(storage => `[ ${storage.type} / ${storage.id} ] <strong>${storage.name}</strong> ${(storage.capacity * 1e-9).toFixed(2)} GB`).join('<br/>')}<br/>
+  `;
+}
+
+async function getCPUData() {
+  return new Promise((resolve) => {
+    chrome.system.cpu.getInfo(resolve);
+  });
+}
+
+async function getMemoryData() {
+  return new Promise((resolve) => {
+    chrome.system.memory.getInfo(resolve);
+  });
+}
+
+async function getStorageData() {
+  return new Promise((resolve) => {
+    chrome.system.storage.getInfo(resolve);
+  });
 }
