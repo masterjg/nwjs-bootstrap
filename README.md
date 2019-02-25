@@ -28,6 +28,44 @@ Install everything else
 pnpm install
 ```
 
+## Scripts
+
+Generate icons in resources directory
+
+```
+pnpm run generate:icons
+```
+
+Start project
+
+```
+pnpm run start
+```
+
+Build project (all OSes)
+
+```
+pnpm run build
+```
+
+Build project (Windows)
+
+```
+pnpm run build:win
+```
+
+Build project (Linux)
+
+```
+pnpm run build:lnx
+```
+
+Build project (MacOS)
+
+```
+pnpm run build:mac
+```
+
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/masterjg/nwjs-bootstrap/tags). 

@@ -17,23 +17,50 @@
     "email": "masterj2@gmail.com"
   },
   "contributors": [],
-  "main": "app.js",
-  "browser": "app.js",
-  "bin": {
-    "nwjs": "./app.js"
-  },
+  "main": "./src/index.html",
   "repository": {
     "type": "git",
     "url": "git@github.com:masterjg/nwjs-bootstrap.git"
   },
   "scripts": {
-
-  },
-  "dependencies": {
-
+    "generate:icons": "png2icons ./resources/icon.png ./resources/icon -allp -hm",
+    "start": "run --x64 .",
+    "build": "build --concurrent --tasks win-x64,linux-x64,mac-x64 .",
+    "build:win": "build --tasks win-x64 .",
+    "build:lnx": "build --tasks linux-x64 .",
+    "build:mac": "build --tasks mac-x64 ."
   },
   "devDependencies": {
-
+    "nwjs-builder-phoenix": "^1.15.0",
+    "png2icons": "^1.0.1",
+    "webpack": "^4.29.5"
   },
-  "private": true
+  "private": true,
+  "window": {
+    "title": "nwjs-bootstrap",
+    "min_width": 1280,
+    "min_height": 720,
+    "icon": "./resources/icon.png",
+    "show_in_taskbar": false
+  },
+  "webkit": {
+    "plugin": false
+  },
+  "chromium-args": "--mixed-context --user-data-dir=data",
+  "build": {
+    "nwVersion": "0.36.2",
+    "output": "./build/",
+    "packed": true,
+    "files": [
+      "./src/index.html",
+      "./resources/icon.png"
+    ],
+    "appId": "io.nwjs-bootstrap.${name}",
+    "win": {
+      "icon": "./resources/icon.ico"
+    },
+    "mac": {
+      "icon": "./resources/icon.icns"
+    }
+  }
 }
