@@ -38,4 +38,4 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the CC-BY-NC-SA-4.0 License.
