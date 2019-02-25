@@ -34,7 +34,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Marius Guščius** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Marius Guščius** - *Initial work* - [NW.js bootstrap](https://github.com/masterjg/nwjs-bootstrap)
 
 ## License
 
