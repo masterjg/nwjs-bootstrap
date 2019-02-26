@@ -1,6 +1,6 @@
 {
   "name": "nwjs-bootstrap",
-  "version": "0.0.1",
+  "version": "0.5.0",
   "description": "NW.js bootstrap to kickstart your project.",
   "keywords": [
     "nw.js",
@@ -17,14 +17,17 @@
     "email": "masterj2@gmail.com"
   },
   "contributors": [],
-  "main": "./dist/index.html",
+  "main": "http://127.0.0.1:8080",
+  "node-remote": "http://127.0.0.1:8080",
   "repository": {
     "type": "git",
     "url": "git@github.com:masterjg/nwjs-bootstrap.git"
   },
   "scripts": {
     "generate:icons": "png2icons ./resources/icon.png ./resources/icon -allp -hm",
-    "start": "cross-env NODE_ENV=development webpack && run --x64 .",
+    "_start:webpack-dev-server": "webpack-dev-server",
+    "_start:nwjs-delayed": "sleep 5 && run --x64 .",
+    "start": "cross-env NODE_ENV=development run-p -r _start:webpack-dev-server _start:nwjs-delayed",
     "build": "cross-env NODE_ENV=production webpack && build --concurrent --tasks win-x64,linux-x64,mac-x64 .",
     "build:win": "cross-env NODE_ENV=production webpack && build --tasks win-x64 .",
     "build:lnx": "cross-env NODE_ENV=production webpack && build --tasks linux-x64 .",
@@ -32,14 +35,16 @@
   },
   "devDependencies": {
     "clean-webpack-plugin": "^1.0.1",
+    "copy-webpack-plugin": "^4.0.0",
     "cross-env": "^5.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "npm-run-all": "^4.1.5",
     "nwjs-builder-phoenix": "^1.15.0",
     "png2icons": "^1.0.1",
     "webpack": "^4.29.5",
-    "webpack-cli": "^3.2.3"
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
   },
-  "private": false,
   "window": {
     "title": "nwjs-bootstrap",
     "min_width": 1280,
