@@ -6,11 +6,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 process.traceDeprecation = true;
 
 module.exports = {
+  stats: 'minimal',
   externals: {
     "chrome": "chrome"
   },
   devtool: "source-map",
-  mode: process.env.NODE_ENV,
+  mode: process.env.NODE_ENV || 'development',
   target: "node-webkit",
   entry: [
     path.resolve(__dirname, 'src/app.js')
@@ -26,8 +27,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/index.html'),
-      filename: 'index.html',
-      verbose: false
+      filename: 'index.html'
     })
   ]
 };

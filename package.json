@@ -39,7 +39,7 @@
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3"
   },
-  "private": true,
+  "private": false,
   "window": {
     "title": "nwjs-bootstrap",
     "min_width": 1280,
