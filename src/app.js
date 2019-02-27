@@ -11,7 +11,7 @@ setInterval(async () => {
   ]);
 }, 1000);
 
-async function setCPUDataInDOM() {
+async function setCPUDataInDOM () {
   const cpuInfo = await getCPUData();
   const currentProcessorsInfo = cpuInfo.processors;
   document.getElementById('cpu').innerHTML = `
@@ -22,21 +22,21 @@ async function setCPUDataInDOM() {
     <strong>Processors:</strong> ${cpuInfo.numOfProcessors}<br/>
     <strong>Usage:</strong><br/>
     ${(() => {
-      const cpuUsage = [];
-      for (let processorId = 0; processorId < cpuInfo.numOfProcessors; processorId++) {
-        const currentCPUData = currentProcessorsInfo[processorId].usage;
-        const previousCPUData = previousProcessorsInfo ? previousProcessorsInfo[processorId].usage : { user: 0, kernel: 0, total: 0 };
-        const cpuData = (currentCPUData.kernel + currentCPUData.user - previousCPUData.kernel - previousCPUData.user) / (currentCPUData.total - previousCPUData.total);
-        const cpuDataPercentage = Math.floor(cpuData * 100);
-        cpuUsage[processorId] = `<progress value="${cpuDataPercentage}" max="100"></progress>`;
-      }
-      return cpuUsage.join('<br/>');
-    })()}<br/>
+    const cpuUsage = [];
+    for (let processorId = 0; processorId < cpuInfo.numOfProcessors; processorId++) {
+      const currentCPUData = currentProcessorsInfo[processorId].usage;
+      const previousCPUData = previousProcessorsInfo ? previousProcessorsInfo[processorId].usage : { user: 0, kernel: 0, total: 0 };
+      const cpuData = (currentCPUData.kernel + currentCPUData.user - previousCPUData.kernel - previousCPUData.user) / (currentCPUData.total - previousCPUData.total);
+      const cpuDataPercentage = Math.floor(cpuData * 100);
+      cpuUsage[processorId] = `<progress value="${cpuDataPercentage}" max="100"></progress>`;
+    }
+    return cpuUsage.join('<br/>');
+  })()}<br/>
   `;
   previousProcessorsInfo = currentProcessorsInfo;
 }
 
-async function setMemoryDataInDOM() {
+async function setMemoryDataInDOM () {
   const memoryInfo = await getMemoryData();
   document.getElementById('memory').innerHTML = `
     <h2>Memory</h2>
@@ -44,7 +44,7 @@ async function setMemoryDataInDOM() {
   `;
 }
 
-async function setStorageDataInDOM() {
+async function setStorageDataInDOM () {
   const storageInfo = await getStorageData();
   document.getElementById('storage').innerHTML = `
     <h2>Storage</h2>
@@ -52,19 +52,19 @@ async function setStorageDataInDOM() {
   `;
 }
 
-async function getCPUData() {
+async function getCPUData () {
   return new Promise((resolve) => {
     chrome.system.cpu.getInfo(resolve);
   });
 }
 
-async function getMemoryData() {
+async function getMemoryData () {
   return new Promise((resolve) => {
     chrome.system.memory.getInfo(resolve);
   });
 }
 
-async function getStorageData() {
+async function getStorageData () {
   return new Promise((resolve) => {
     chrome.system.storage.getInfo(resolve);
   });

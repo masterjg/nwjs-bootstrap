@@ -13,17 +13,17 @@ const isInDevMode = mode === 'development';
 module.exports = {
   stats: 'minimal',
   externals: {
-    "chrome": "chrome"
+    chrome: 'chrome'
   },
-  devtool: "source-map",
+  devtool: 'source-map',
   mode,
-  target: "node-webkit",
+  target: 'node-webkit',
   entry: (() => {
     const entries = [];
     if (isInDevMode) {
       entries.push(
         'webpack-dev-server/client?http://127.0.0.1:8080',
-        'webpack/hot/only-dev-server',
+        'webpack/hot/only-dev-server'
       );
     }
     entries.push(path.resolve(__dirname, 'src/app.js'));
@@ -56,14 +56,17 @@ module.exports = {
     return plugins;
   })(),
   ...(() => {
-    return !isInDevMode ? {} : {
-      devServer: {
-        historyApiFallback: true,
-        hot: true,
-        stats: 'minimal',
-        watchContentBase: true,
-        contentBase: path.join(__dirname, 'src')
-      }
+    if (isInDevMode) {
+      return {
+        devServer: {
+          historyApiFallback: true,
+          hot: true,
+          stats: 'minimal',
+          watchContentBase: true,
+          contentBase: path.join(__dirname, 'src')
+        }
+      };
     }
+    return {};
   })()
 };

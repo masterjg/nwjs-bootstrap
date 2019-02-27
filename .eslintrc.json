@@ -1,0 +1,45 @@
+{
+  "extends": [
+    "airbnb-standard"
+  ],
+  "rules": {
+    "no-nested-ternary": "off",
+    "no-await-in-loop": "off",
+    "no-new": "off",
+    "array-bracket-spacing": [
+      "error",
+      "always"
+    ],
+    "class-methods-use-this": "off",
+    "no-param-reassign": [
+      2,
+      {
+        "props": false
+      }
+    ],
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allowAfterThis": true,
+        "allowAfterSuper": true
+      }
+    ],
+    "no-return-assign": "off",
+    "no-plusplus": "off",
+    "max-len": [
+      "error",
+      {
+        "code": 200,
+        "ignoreComments": true
+      }
+    ],
+    "import/no-unresolved": [
+      "error",
+      {
+        "ignore": [
+          "chrome"
+        ]
+      }
+    ]
+  }
+}

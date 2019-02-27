@@ -2,6 +2,7 @@ devDependencies:
   clean-webpack-plugin: 1.0.1
   copy-webpack-plugin: 4.6.0
   cross-env: 5.2.0
+  eslint-config-airbnb-standard: 3.0.1
   html-webpack-plugin: 3.2.0
   npm-run-all: 4.1.5
   nwjs-builder-phoenix: 1.15.0
@@ -1384,6 +1385,24 @@ packages:
       node: '>=0.8.0'
     resolution:
       integrity: sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
+  /eslint-config-airbnb-standard/3.0.1:
+    bundledDependencies:
+      - babel-eslint
+      - eslint
+      - eslint-config-airbnb
+      - eslint-config-standard
+      - eslint-config-standard-react
+      - eslint-plugin-import
+      - eslint-plugin-jsx-a11y
+      - eslint-plugin-node
+      - eslint-plugin-promise
+      - eslint-plugin-react
+      - eslint-plugin-standard
+      - eslint-plugin-babel
+    dev: true
+    hasBin: true
+    resolution:
+      integrity: sha512-C0wDuGJwH3Fft/ILLUNPLS638yjNO3UscEd2vdQH+iXAMVsvBlPmeTOpjTNWOAoyS5pvEqcEHMGv4PDIqqWNZQ==
   /eslint-scope/4.0.0:
     dependencies:
       esrecurse: 4.2.1
@@ -4925,6 +4944,7 @@ specifiers:
   clean-webpack-plugin: ^1.0.1
   copy-webpack-plugin: ^4.0.0
   cross-env: ^5.2.0
+  eslint-config-airbnb-standard: ^3.0.1
   html-webpack-plugin: ^3.2.0
   npm-run-all: ^4.1.5
   nwjs-builder-phoenix: ^1.15.0
