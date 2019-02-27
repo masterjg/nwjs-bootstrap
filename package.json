@@ -26,7 +26,7 @@
   "scripts": {
     "generate:icons": "png2icons ./resources/icon.png ./resources/icon -allp -hm",
     "_start:webpack-dev-server": "webpack-dev-server",
-    "_start:nwjs-delayed": "sleep 5 && run --x64 .",
+    "_start:nwjs-delayed": "wait-port -o silent 8080 && run --x64 .",
     "start": "cross-env NODE_ENV=development run-p -r _start:webpack-dev-server _start:nwjs-delayed",
     "build": "cross-env NODE_ENV=production webpack && build --concurrent --tasks win-x64,linux-x64,mac-x64 .",
     "build:win": "cross-env NODE_ENV=production webpack && build --tasks win-x64 .",
@@ -41,6 +41,7 @@
     "npm-run-all": "^4.1.5",
     "nwjs-builder-phoenix": "^1.15.0",
     "png2icons": "^1.0.1",
+    "wait-port": "^0.2.2",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1"
