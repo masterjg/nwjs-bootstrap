@@ -56,17 +56,15 @@ module.exports = {
     return plugins;
   })(),
   ...(() => {
-    if (isInDevMode) {
-      return {
-        devServer: {
-          historyApiFallback: true,
-          hot: true,
-          stats: 'minimal',
-          watchContentBase: true,
-          contentBase: path.join(__dirname, 'src')
-        }
-      };
-    }
-    return {};
+    if (!isInDevMode) return {};
+    return {
+      devServer: {
+        historyApiFallback: true,
+        hot: true,
+        stats: 'minimal',
+        watchContentBase: true,
+        contentBase: path.join(__dirname, 'src')
+      }
+    };
   })()
 };
