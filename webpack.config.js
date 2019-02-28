@@ -1,8 +1,8 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const NwjsWebpackPlugin = require('nwjs-webpack-plugin');
 
 // @ts-ignore
 process.traceDeprecation = true;
@@ -18,20 +18,10 @@ module.exports = {
   devtool: 'source-map',
   mode,
   target: 'node-webkit',
-  entry: (() => {
-    const entries = [];
-    if (isInDevMode) {
-      entries.push(
-        'webpack-dev-server/client?http://127.0.0.1:8080',
-        'webpack/hot/only-dev-server'
-      );
-    }
-    entries.push(path.resolve(__dirname, 'src/app.js'));
-    return entries;
-  })(),
+  entry: path.resolve(__dirname, 'src/app.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'app.dist.js'
+    filename: '[name].dist.js'
   },
   plugins: (() => {
     const plugins = [
@@ -49,22 +39,12 @@ module.exports = {
     ];
     if (isInDevMode) {
       plugins.push(
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NamedModulesPlugin()
+        new NwjsWebpackPlugin({
+          command: 'run'
+        })
       );
     }
     return plugins;
   })(),
-  ...(() => {
-    if (!isInDevMode) return {};
-    return {
-      devServer: {
-        historyApiFallback: true,
-        hot: true,
-        stats: 'minimal',
-        watchContentBase: true,
-        contentBase: path.join(__dirname, 'src')
-      }
-    };
-  })()
+  watch: isInDevMode
 };

@@ -17,17 +17,14 @@
     "email": "masterj2@gmail.com"
   },
   "contributors": [],
-  "main": "http://127.0.0.1:8080",
-  "node-remote": "http://127.0.0.1:8080",
+  "main": "./dist/index.html",
   "repository": {
     "type": "git",
     "url": "git@github.com:masterjg/nwjs-bootstrap.git"
   },
   "scripts": {
     "generate:icons": "png2icons ./resources/icon.png ./resources/icon -allp -hm",
-    "_start:webpack-dev-server": "webpack-dev-server",
-    "_start:nwjs-delayed": "wait-port -o silent 8080 && run --x64 .",
-    "start": "cross-env NODE_ENV=development run-p -r _start:webpack-dev-server _start:nwjs-delayed",
+    "start": "cross-env NODE_ENV=development webpack",
     "build": "cross-env NODE_ENV=production webpack && build --concurrent --tasks win-x64,linux-x64,mac-x64 .",
     "build:win": "cross-env NODE_ENV=production webpack && build --tasks win-x64 .",
     "build:lnx": "cross-env NODE_ENV=production webpack && build --tasks linux-x64 .",
@@ -39,13 +36,11 @@
     "cross-env": "^5.2.0",
     "eslint-config-airbnb-standard": "^3.0.1",
     "html-webpack-plugin": "^3.2.0",
-    "npm-run-all": "^4.1.5",
     "nwjs-builder-phoenix": "^1.15.0",
+    "nwjs-webpack-plugin": "git@github.com:masterjg/nwjs-webpack-plugin.git",
     "png2icons": "^1.0.1",
-    "wait-port": "^0.2.2",
     "webpack": "^4.29.5",
-    "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.2.1"
+    "webpack-cli": "^3.2.3"
   },
   "window": {
     "title": "nwjs-bootstrap",
