@@ -40,7 +40,8 @@ module.exports = {
     if (isInDevMode) {
       plugins.push(
         new NwjsWebpackPlugin({
-          command: 'run'
+          command: 'run',
+          commandDir: null,
         })
       );
     }

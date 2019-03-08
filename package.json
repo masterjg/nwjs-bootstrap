@@ -34,10 +34,9 @@
     "clean-webpack-plugin": "^1.0.1",
     "copy-webpack-plugin": "^4.0.0",
     "cross-env": "^5.2.0",
-    "eslint-config-airbnb-standard": "^3.0.1",
     "html-webpack-plugin": "^3.2.0",
     "nwjs-builder-phoenix": "^1.15.0",
-    "nwjs-webpack-plugin": "git@github.com:masterjg/nwjs-webpack-plugin.git",
+    "nwjs-webpack-plugin": "^0.4.0",
     "png2icons": "^1.0.1",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3"

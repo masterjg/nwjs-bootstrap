@@ -2,10 +2,9 @@ devDependencies:
   clean-webpack-plugin: 1.0.1
   copy-webpack-plugin: 4.6.0
   cross-env: 5.2.0
-  eslint-config-airbnb-standard: 3.0.1
   html-webpack-plugin: 3.2.0
   nwjs-builder-phoenix: 1.15.0
-  nwjs-webpack-plugin: github.com/masterjg/nwjs-webpack-plugin/0d83316c655aa1a3ece16fbab44ac6de244f1199
+  nwjs-webpack-plugin: 0.4.0
   png2icons: 1.0.1
   webpack: 4.29.5
   webpack-cli: 3.2.3
@@ -342,6 +341,15 @@ packages:
       ajv: '>=5.0.0'
     resolution:
       integrity: sha512-DCRfO/4nQ+89p/RK43i8Ezd41EqdGIU4ld7nGF8OQ14oc/we5rEntLCUa7+jrn3nn83BosfwZA0wb4pon2o8iQ==
+  /ajv-keywords/3.4.0/ajv@6.10.0:
+    dependencies:
+      ajv: 6.10.0
+    dev: true
+    id: registry.npmjs.org/ajv-keywords/3.4.0
+    peerDependencies:
+      ajv: ^6.9.1
+    resolution:
+      integrity: sha512-aUjdRFISbuFOl0EIZc+9e4FfZp0bDZgAdOOf30bJmw8VM9v84SHyVyxDfbWxpGYbdZD/9XoKxfHVNmxPkhwyGw==
   /ajv-keywords/3.4.0/ajv@6.9.2:
     dependencies:
       ajv: 6.9.2
@@ -351,6 +359,15 @@ packages:
       ajv: ^6.9.1
     resolution:
       integrity: sha512-aUjdRFISbuFOl0EIZc+9e4FfZp0bDZgAdOOf30bJmw8VM9v84SHyVyxDfbWxpGYbdZD/9XoKxfHVNmxPkhwyGw==
+  /ajv/6.10.0:
+    dependencies:
+      fast-deep-equal: 2.0.1
+      fast-json-stable-stringify: 2.0.0
+      json-schema-traverse: 0.4.1
+      uri-js: 4.2.2
+    dev: true
+    resolution:
+      integrity: sha512-nffhOpkymDECQyR0mnsUtoCE8RlX38G0rYP+wgLWFyZuUyuuojSSvi/+euOiQBIn63whYwYVIIH1TvE3tu4OEg==
   /ajv/6.9.2:
     dependencies:
       fast-deep-equal: 2.0.1
@@ -1277,24 +1294,6 @@ packages:
       node: '>=0.8.0'
     resolution:
       integrity: sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
-  /eslint-config-airbnb-standard/3.0.1:
-    bundledDependencies:
-      - babel-eslint
-      - eslint
-      - eslint-config-airbnb
-      - eslint-config-standard
-      - eslint-config-standard-react
-      - eslint-plugin-import
-      - eslint-plugin-jsx-a11y
-      - eslint-plugin-node
-      - eslint-plugin-promise
-      - eslint-plugin-react
-      - eslint-plugin-standard
-      - eslint-plugin-babel
-    dev: true
-    hasBin: true
-    resolution:
-      integrity: sha512-C0wDuGJwH3Fft/ILLUNPLS638yjNO3UscEd2vdQH+iXAMVsvBlPmeTOpjTNWOAoyS5pvEqcEHMGv4PDIqqWNZQ==
   /eslint-scope/4.0.0:
     dependencies:
       esrecurse: 4.2.1
@@ -1304,6 +1303,15 @@ packages:
       node: '>=4.0.0'
     resolution:
       integrity: sha512-1G6UTDi7Jc1ELFwnR58HV4fK9OQK4S6N985f166xqXxpjU6plxFISJa2Ba9KCQuFa8RCnj/lSFJbHo7UFDBnUA==
+  /eslint-scope/4.0.2:
+    dependencies:
+      esrecurse: 4.2.1
+      estraverse: 4.2.0
+    dev: true
+    engines:
+      node: '>=4.0.0'
+    resolution:
+      integrity: sha512-5q1+B/ogmHl8+paxtOKx38Z8LtWkVGuNt3+GQNErqwLl6ViNp/gdJGMCjZNxZ8j/VYjDNZ2Fo+eQc1TAVPIzbg==
   /esrecurse/4.2.1:
     dependencies:
       estraverse: 4.2.0
@@ -1577,12 +1585,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-3t6rVToeoZfYSGd8YoLFR2DJkiQrIiUrGcjvFX2mDw3bn6k2OtwHN0TNCLbBO+w8qTvimhDkv+LSscbJY1vE6w==
-  /get-port/4.1.0:
+  /get-port/4.2.0:
     dev: true
     engines:
       node: '>=6'
     resolution:
-      integrity: sha512-4/fqAYrzrzOiqDrdeZRKXGdTGgbkfTEumGlNQPeP6Jy8w0PzN9mzeNQ3XgHaTNie8pQ3hOUkrwlZt2Fzk5H9mA==
+      integrity: sha512-/b3jarXkH8KJoOMQc3uVGHASwGLPq3gSFJ7tgJm2diza+bydJPTGOibin2steecKeOylE8oY2JERlVWkAJO6yw==
   /get-stream/4.1.0:
     dependencies:
       pump: 3.0.0
@@ -2621,6 +2629,15 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-bYA1lsNwjm+WvfSfa2YxGanUGUN8CsSImBB6gkUZ+OWLxLAniga2sUrKcLaRi5l+qmLsDhbXmyNNppHsX4Ci5g==
+  /nwjs-webpack-plugin/0.4.0:
+    dependencies:
+      ansi-to-html: 0.6.10
+      cross-spawn: 6.0.5
+      get-port: 4.2.0
+      webpack: /webpack/4.29.6/webpack@4.29.6
+    dev: true
+    resolution:
+      integrity: sha512-wNqpBmIWQUw0Rcxpd/MAB48yx9cR5ZhLmJm4juVSO9p8dQYemV8Rd1awLBLNEqVoE74XhAp2bAX2IEmXl7GpHQ==
   /oauth-sign/0.9.0:
     dev: true
     resolution:
@@ -3970,11 +3987,11 @@ packages:
       '@webassemblyjs/wasm-parser': 1.8.5
       acorn: 6.1.1
       acorn-dynamic-import: /acorn-dynamic-import/4.0.0/acorn@6.1.1
-      ajv: 6.9.2
-      ajv-keywords: /ajv-keywords/3.4.0/ajv@6.9.2
+      ajv: 6.10.0
+      ajv-keywords: /ajv-keywords/3.4.0/ajv@6.10.0
       chrome-trace-event: 1.0.0
       enhanced-resolve: 4.1.0
-      eslint-scope: 4.0.0
+      eslint-scope: 4.0.2
       json-parse-better-errors: 1.0.2
       loader-runner: 2.4.0
       loader-utils: 1.2.3
@@ -4111,17 +4128,6 @@ packages:
     dev: true
     resolution:
       integrity: sha1-a6MY6xaWFyf10oT46gA+jWFU0Mg=
-  github.com/masterjg/nwjs-webpack-plugin/0d83316c655aa1a3ece16fbab44ac6de244f1199:
-    dependencies:
-      ansi-to-html: 0.6.10
-      cross-spawn: 6.0.5
-      get-port: 4.1.0
-      webpack: /webpack/4.29.6/webpack@4.29.6
-    dev: true
-    name: nwjs-webpack-plugin
-    resolution:
-      tarball: 'https://codeload.github.com/masterjg/nwjs-webpack-plugin/tar.gz/0d83316c655aa1a3ece16fbab44ac6de244f1199'
-    version: 0.3.0
 registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
@@ -4129,10 +4135,9 @@ specifiers:
   clean-webpack-plugin: ^1.0.1
   copy-webpack-plugin: ^4.0.0
   cross-env: ^5.2.0
-  eslint-config-airbnb-standard: ^3.0.1
   html-webpack-plugin: ^3.2.0
   nwjs-builder-phoenix: ^1.15.0
-  nwjs-webpack-plugin: 'git+ssh://git@github.com/masterjg/nwjs-webpack-plugin.git'
+  nwjs-webpack-plugin: ^0.4.0
   png2icons: ^1.0.1
   webpack: ^4.29.5
   webpack-cli: ^3.2.3
