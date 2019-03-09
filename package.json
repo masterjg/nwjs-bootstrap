@@ -50,7 +50,7 @@
   "webkit": {
     "plugin": false
   },
-  "chromium-args": "--mixed-context --user-data-dir=data",
+  "chromium-args": "--mixed-context --user-data-dir=data --enable-node-worker --disable-raf-throttling --disable-gpu --single-process",
   "build": {
     "nwVersion": "0.36.2",
     "output": "./build/",
