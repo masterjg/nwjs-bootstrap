@@ -13,7 +13,8 @@ const isInDevMode = mode === 'development';
 module.exports = {
   stats: 'minimal',
   externals: {
-    chrome: 'chrome'
+    chrome: 'chrome',
+    nw: 'nw',
   },
   devtool: 'source-map',
   mode,
@@ -21,31 +22,37 @@ module.exports = {
   entry: path.resolve(__dirname, 'src/app.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].dist.js'
+    filename: '[name].dist.js',
   },
   plugins: (() => {
     const plugins = [
-      new CleanWebpackPlugin([ path.resolve(__dirname, 'dist') ], {
-        exclude: [ '.gitkeep' ],
-        verbose: false
+      new CleanWebpackPlugin([path.resolve(__dirname, 'dist')], {
+        exclude: ['.gitkeep'],
+        verbose: false,
       }),
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'src/index.html'),
-        filename: 'index.html'
+        filename: 'index.html',
       }),
       new CopyWebpackPlugin([
-        path.resolve(__dirname, 'src/icon.png')
-      ])
+        path.resolve(__dirname, 'src/icon.png'),
+      ]),
     ];
     if (isInDevMode) {
       plugins.push(
         new NwjsWebpackPlugin({
-          command: 'run',
+          command: 'run .',
           commandDir: null,
-        })
+        }),
       );
     }
     return plugins;
   })(),
-  watch: isInDevMode
+  watch: isInDevMode,
+  resolve: {
+    modules: [
+      'src',
+      'node_modules',
+    ],
+  },
 };
