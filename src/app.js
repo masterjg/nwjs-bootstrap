@@ -1,5 +1,20 @@
 // @ts-ignore
 import chrome from 'chrome';
+// @ts-ignore
+import nw from 'nw';
+// @ts-ignore
+import Menu from 'services/Menu';
+
+Menu.setUp({
+  File: {
+    Exit: {
+      key: 'esc',
+      click: () => {
+        nw.App.quit();
+      },
+    },
+  },
+});
 
 let previousProcessorsInfo;
 
